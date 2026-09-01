@@ -263,6 +263,50 @@ ul { list-style: none; }
     border-radius: 1px;
 }
 
+/* ── Slide 4 Custom Grid & Subtitle Styles ──────────── */
+.slide-subtitle {
+    font-size: clamp(1rem, 1.4vw, 1.35rem);
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+}
+
+.slide-intro {
+    margin-bottom: 0.5rem !important;
+}
+
+.services-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.3rem 1.5rem;
+    text-align: left;
+    max-width: 660px !important;
+    margin: 0.5rem auto 0.75rem !important;
+}
+
+.services-grid li {
+    font-size: clamp(0.75rem, 0.95vw, 0.9rem) !important;
+    margin-bottom: 0.2rem !important;
+    padding-left: 1.1rem !important;
+    line-height: 1.4 !important;
+}
+
+.services-grid li::before {
+    top: 0.45em !important;
+    width: 4px !important;
+    height: 4px !important;
+}
+
+.slide-outro {
+    font-size: clamp(0.78rem, 0.95vw, 0.88rem) !important;
+    font-weight: 300;
+    color: var(--color-subtext);
+    margin-top: 0.6rem;
+    line-height: 1.55 !important;
+}
+
 /* =========================================================
    PERSISTENT Social Links — always visible
    ========================================================= */
@@ -499,6 +543,30 @@ ul { list-style: none; }
         line-height: 1.65;
     }
 
+    .slide-subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.2rem 0.6rem;
+        margin: 0.3rem auto 0.4rem !important;
+    }
+
+    .services-grid li {
+        font-size: 0.72rem !important;
+        padding-left: 0.85rem !important;
+        line-height: 1.35 !important;
+        margin-bottom: 0.15rem !important;
+    }
+
+    .slide-outro {
+        font-size: 0.7rem !important;
+        line-height: 1.4 !important;
+        margin-top: 0.3rem;
+    }
+
     /* Social buttons — horizontal row above slide indicator */
     .persistent-socials {
         left: 50%;
@@ -562,6 +630,27 @@ ul { list-style: none; }
     .slide-text ul li {
         font-size: 0.8rem;
         line-height: 1.6;
+    }
+
+    .slide-subtitle {
+        font-size: 0.88rem;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.15rem 0.4rem;
+    }
+
+    .services-grid li {
+        font-size: 0.65rem !important;
+        padding-left: 0.75rem !important;
+        line-height: 1.3 !important;
+    }
+
+    .slide-outro {
+        font-size: 0.65rem !important;
+        line-height: 1.3 !important;
+        margin-top: 0.25rem;
     }
 
     .persistent-socials {
