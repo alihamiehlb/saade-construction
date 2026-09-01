@@ -12,7 +12,7 @@
 
     /* Brand colors */
     --color-instagram: #E1306C;
-    --color-tiktok: #69C9D0;
+    --color-tiktok: #ff0050;
     --color-whatsapp: #25D366;
 }
 
@@ -56,12 +56,15 @@ ul { list-style: none; }
     top: 0;
     left: 0;
     width: 100%;
-    padding: 2rem 4rem;
+    padding: 1.5rem 4rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 200;
-    mix-blend-mode: exclusion;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .logo {
@@ -264,11 +267,12 @@ ul { list-style: none; }
    ========================================================= */
 .persistent-socials {
     position: fixed;
-    left: 4rem;
-    bottom: 5.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 6rem;
     z-index: 150;
     display: flex;
-    gap: 0.8rem;
+    gap: 1.5rem;
 }
 
 .social-btn {
@@ -370,8 +374,8 @@ ul { list-style: none; }
    ========================================================= */
 .floating-whatsapp {
     position: fixed;
-    bottom: 2.2rem;
-    right: 3rem;
+    bottom: 4rem;
+    right: 4rem;
     z-index: 200;
     display: flex;
     align-items: center;
@@ -391,8 +395,8 @@ ul { list-style: none; }
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 60px;
-    height: 60px;
+    width: 75px;
+    height: 75px;
     color: var(--color-whatsapp);
     flex-shrink: 0;
     transition: color 0.3s ease;
@@ -427,9 +431,9 @@ ul { list-style: none; }
 }
 
 .floating-whatsapp:hover .wa-label {
-    max-width: 120px;
+    max-width: 140px;
     opacity: 1;
-    padding-right: 1.4rem;
+    padding-right: 1.6rem;
     color: var(--color-text);
 }
 
