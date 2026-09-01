@@ -1,0 +1,518 @@
+/* =========================================================
+   SAADE CONSTRUCTION — Premium Landing Page Styles
+   ========================================================= */
+
+:root {
+    --color-bg: #000000;
+    --color-surface: #111111;
+    --color-text: #FFFFFF;
+    --color-subtext: #E8E8E8;
+    --color-muted: rgba(232, 232, 232, 0.5);
+    --font-primary: 'Outfit', sans-serif;
+
+    /* Social brand colors */
+    --color-instagram: #E1306C;
+    --color-tiktok: #69C9D0;
+}
+
+/* --- Reset --- */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-primary);
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography Base */
+h1, h2, h3, nav a {
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+/* =========================================================
+   Navigation
+   ========================================================= */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 200;
+    mix-blend-mode: exclusion;
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.2em;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+}
+
+.nav-links a {
+    position: relative;
+    padding-bottom: 4px;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--color-text);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Hamburger (mobile) */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    z-index: 210;
+}
+
+.hamburger span {
+    display: block;
+    width: 24px;
+    height: 1.5px;
+    background: var(--color-text);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.hamburger.active span:first-child {
+    transform: translateY(3.75px) rotate(45deg);
+}
+.hamburger.active span:last-child {
+    transform: translateY(-3.75px) rotate(-45deg);
+}
+
+/* =========================================================
+   Hero
+   ========================================================= */
+.hero {
+    position: relative;
+    height: 100vh;
+    height: 100dvh; /* Dynamic viewport for mobile browsers */
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* --- Slider --- */
+.slider-container {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+}
+
+.slide-img {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(100%) contrast(1.1);
+    transform: scale(1.1);
+    will-change: transform;
+}
+
+.overlay-dark {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        180deg,
+        rgba(0,0,0,0.35) 0%,
+        rgba(0,0,0,0.55) 40%,
+        rgba(0,0,0,0.75) 100%
+    );
+    z-index: 2;
+}
+
+/* --- Hero Title (top-center area) --- */
+.hero-content {
+    position: absolute;
+    top: 22%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    text-align: center;
+    width: 100%;
+    padding: 0 2rem;
+    pointer-events: none;
+}
+
+.title {
+    font-size: clamp(2.8rem, 8vw, 7rem);
+    font-weight: 700;
+    line-height: 0.92;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.title span {
+    display: inline-block;
+}
+
+/* --- Slide Text Overlays (below title, center) --- */
+.slide-texts-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -10%);
+    width: 90%;
+    max-width: 720px;
+    z-index: 10;
+    text-align: center;
+}
+
+.slide-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+}
+
+.slide-text p {
+    font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+    font-weight: 300;
+    color: var(--color-subtext);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    letter-spacing: 0.03em;
+}
+
+.slide-text ul {
+    text-align: left;
+    max-width: 580px;
+    margin: 0.5rem auto 0;
+}
+
+.slide-text ul li {
+    font-size: clamp(0.85rem, 1.1vw, 1.05rem);
+    font-weight: 300;
+    color: var(--color-subtext);
+    line-height: 1.7;
+    padding-left: 1.2rem;
+    position: relative;
+    margin-bottom: 0.5rem;
+}
+
+.slide-text ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.65em;
+    width: 5px;
+    height: 5px;
+    border: 1px solid var(--color-muted);
+    border-radius: 1px;
+}
+
+/* --- Social Links (branded, bordered) --- */
+.slide-socials {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 0.65rem 1.4rem;
+    border-radius: 4px;
+    transition: all 0.35s ease;
+}
+
+.social-link svg {
+    flex-shrink: 0;
+}
+
+/* Instagram */
+.social-instagram {
+    color: var(--color-instagram);
+    border: 1px solid var(--color-instagram);
+}
+.social-instagram:hover {
+    background-color: var(--color-instagram);
+    color: var(--color-text);
+}
+
+/* TikTok */
+.social-tiktok {
+    color: var(--color-tiktok);
+    border: 1px solid var(--color-tiktok);
+}
+.social-tiktok:hover {
+    background-color: var(--color-tiktok);
+    color: var(--color-bg);
+}
+
+/* --- Slide Indicator --- */
+.slide-indicator {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 4rem;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    font-size: 0.8rem;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+}
+
+.progress-bar {
+    width: 120px;
+    height: 1px;
+    background-color: rgba(255,255,255,0.15);
+    position: relative;
+}
+
+.progress-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0%;
+    background-color: var(--color-text);
+}
+
+/* --- Bottom Tagline --- */
+.bottom-tagline {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    color: var(--color-muted);
+    font-weight: 300;
+    white-space: nowrap;
+}
+
+/* =========================================================
+   Floating WhatsApp Button
+   ========================================================= */
+.floating-contact {
+    position: fixed;
+    bottom: 2.5rem;
+    right: 4rem;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    background-color: var(--color-surface);
+    border-radius: 50px;
+    padding: 1.1rem;
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    cursor: pointer;
+    overflow: hidden;
+    animation: pulse 3s infinite;
+}
+
+.floating-contact:hover {
+    padding-left: 1.8rem;
+    padding-right: 1.4rem;
+    background-color: var(--color-text);
+    color: var(--color-bg);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(255,255,255,0.12);
+    animation: none;
+}
+
+.btn-text {
+    max-width: 0;
+    opacity: 0;
+    white-space: nowrap;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: max-width 0.4s ease, opacity 0.3s ease, margin 0.4s ease;
+}
+
+.floating-contact:hover .btn-text {
+    max-width: 140px;
+    opacity: 1;
+    margin-right: 0.8rem;
+}
+
+.btn-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(255,255,255,0.08); }
+    70%  { box-shadow: 0 0 0 14px rgba(255,255,255,0); }
+    100% { box-shadow: 0 0 0 0 rgba(255,255,255,0); }
+}
+
+/* =========================================================
+   Mobile — max 768px
+   ========================================================= */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 1.2rem 1.5rem;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100vh;
+        height: 100dvh;
+        background: rgba(0,0,0,0.95);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2.5rem;
+        font-size: 1.2rem;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.35s ease;
+        mix-blend-mode: normal;
+    }
+
+    .nav-links.open {
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .hero-content {
+        top: 18%;
+    }
+
+    .title {
+        font-size: clamp(2.4rem, 12vw, 4rem);
+    }
+
+    .slide-texts-wrapper {
+        top: 46%;
+        width: 92%;
+    }
+
+    .slide-text p,
+    .slide-text ul li {
+        font-size: 0.88rem;
+    }
+
+    .slide-socials {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .social-link {
+        width: 180px;
+        justify-content: center;
+    }
+
+    .slide-indicator {
+        bottom: 1.5rem;
+        left: 1.5rem;
+    }
+
+    .progress-bar {
+        width: 80px;
+    }
+
+    .floating-contact {
+        bottom: 1.5rem;
+        right: 1.5rem;
+        padding: 0.9rem;
+    }
+
+    .bottom-tagline {
+        display: none;
+    }
+}
+
+/* =========================================================
+   Small phones — max 400px
+   ========================================================= */
+@media (max-width: 400px) {
+    .title {
+        font-size: 2.2rem;
+    }
+
+    .hero-content {
+        top: 15%;
+    }
+
+    .slide-texts-wrapper {
+        top: 42%;
+    }
+
+    .slide-text p,
+    .slide-text ul li {
+        font-size: 0.82rem;
+        line-height: 1.6;
+    }
+}
